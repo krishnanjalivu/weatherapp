@@ -163,10 +163,16 @@ h2{
 }
 .error{
     padding: 10px 25px;
-    background-color: white;
+    background-color: rgb(207, 114, 86);
     border-radius: 15px;
-    color: orange;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 20px;
+    font-weight: 700;
+}
+.erroricon{
+    margin: 7px;
+
 }
 button{
     background-color: transparent;
