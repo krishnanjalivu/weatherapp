@@ -11,36 +11,58 @@ function App() {
   const [forecast, setForecast] = useState(null);
   const [unit, setUnit] = useState("metric"); // Default unit
 
-  useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        const data = await fetchWeatherData(city, unit);
-        setWeatherData(data);
-        setError(null);
-        
-      } catch (error) {
-        setError(
-          "Failed to fetch weather data. Please check your city name or API key."
-        );
-      }
-    };
-    const fetchforecast = async () => {
-      try {
-        const data = await fetchforecastData(city, unit);
-        setForecast(data);
-        setError(null);
-      } catch (error) {
-        setError(
-          "Failed to fetch weather data. Please check your city name or API key."
-        );
-      }
-    };
+  // useEffect(() => {
+  //   const fetchWeather = async () => {
+  //     try {
+  //       const data = await fetchWeatherData(city, unit);
+  //       setWeatherData(data);
+  //       setError(null);
+  //     } catch (error) {
+  //       setError(
+  //         "Failed to fetch weather data. Please check your city name or API key."
+  //       );
+  //     }
+  //   };
+  //   const fetchforecast = async () => {
+  //     try {
+  //       const data = await fetchforecastData(city, unit);
+  //       setForecast(data);
+  //       setError(null);
+  //     } catch (error) {
+  //       setError(
+  //         "Failed to fetch weather data. Please check your city name or API key."
+  //       );
+  //     }
+  //   };
 
-    if (city) {
-      fetchWeather();
-      fetchforecast();
+
+    
+  //   if (city) {
+  //     fetchWeather();
+  //     fetchforecast();
+  //   }
+  // }, [city, unit]);
+  
+  const handleSearch = async () => {
+    try {
+      const weather = await fetchWeatherData(city, unit);
+      const forecastData = await fetchforecastData(city, unit);
+      setWeatherData(weather);
+      setForecast(forecastData);
+      setError(null);
+      setCity('');
+    } catch (error) {
+      setError("Failed to fetch weather data. Please check your city name or API key.");
     }
-  }, [city, unit]);
+  };
+
+  useEffect(() => {
+    
+    if (city && weatherData) {
+      fetchWeatherData(city, unit);
+      fetchforecastData(city, unit);
+    }
+  }, [city, unit, weatherData]);
 
   const fetchWeatherData = async (city, unit) => {
     const apiKey = import.meta.env.VITE_API_KEY; // Replace with your actual API key
@@ -56,7 +78,7 @@ function App() {
   };
   const fetchforecastData = async (city, unit) => {
     const apiKey = import.meta.env.VITE_API_KEY;
-    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}&exclude=current`;
 
     try {
       const response = await axios.get(url);
@@ -69,34 +91,45 @@ function App() {
 
   const handleCityChange = (event) => {
     setCity(event.target.value);
-
-
+    setError(null);
+   
   };
 
   const handleUnitChange = (newUnit) => {
     setUnit(newUnit);
-    fetchWeatherData(city, newUnit); // Refetch data with new unit
+    fetchWeatherData(city, newUnit); 
   };
+  // const handleKeyPress = (event) => {
+  //   if (event.key === "Enter") {
+  //     handleSearch(); // Trigger search on Enter key press
+  //   }
+  // };
+ 
 
   return (
     <div className="app">
       <div className="head1">
-        <h1>Weather Forecast</h1>
-             {" "}
+        <h1>Weather Forecast</h1>     {" "}
+        <div className="searchbar">
         <input
+         id="cityinput"
           className="glass"
           type="text"
           placeholder="Enter city name"
           value={city}
           onChange={handleCityChange}
+          // onKeyPress={handleKeyPress}
+          
         />
-        <TemperatureUnitToggle unit={unit} onUnitChange={handleUnitChange} />
+        <div className="searchbtn"><button onClick={handleSearch}><img src="/src/assets/search.png" height={25} width={25} alt="search"></img></button></div>
+        </div>
+        <TemperatureUnitToggle unit={unit} onUnitChange={handleUnitChange}  />
       </div>
       <div className="bodyerror">
-            {error && <p className="error">City Not Found</p>}
+   {error && <p className="error">City Not Found</p>}
       </div>
       <div className="data">
-         {" "}
+           {" "}
         {weatherData && (
           <>
             <div className="weather">
