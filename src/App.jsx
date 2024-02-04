@@ -3,7 +3,7 @@ import axios from "axios";
 import CurrentWeather from "./components/CurrentWeather";
 import FiveDayForecast from "./components/FiveDayForecast";
 import TemperatureUnitToggle from "./components/TemperatureUnitToggle";
-
+import search from "./assets/search.png"
 function App() {
   const [city, setCity] = useState("");
   const [error, setError] = useState(null);
@@ -11,37 +11,6 @@ function App() {
   const [forecast, setForecast] = useState(null);
   const [unit, setUnit] = useState("metric"); // Default unit
 
-  // useEffect(() => {
-  //   const fetchWeather = async () => {
-  //     try {
-  //       const data = await fetchWeatherData(city, unit);
-  //       setWeatherData(data);
-  //       setError(null);
-  //     } catch (error) {
-  //       setError(
-  //         "Failed to fetch weather data. Please check your city name or API key."
-  //       );
-  //     }
-  //   };
-  //   const fetchforecast = async () => {
-  //     try {
-  //       const data = await fetchforecastData(city, unit);
-  //       setForecast(data);
-  //       setError(null);
-  //     } catch (error) {
-  //       setError(
-  //         "Failed to fetch weather data. Please check your city name or API key."
-  //       );
-  //     }
-  //   };
-
-
-    
-  //   if (city) {
-  //     fetchWeather();
-  //     fetchforecast();
-  //   }
-  // }, [city, unit]);
   
   const handleSearch = async () => {
     try {
@@ -121,7 +90,7 @@ function App() {
           // onKeyPress={handleKeyPress}
           
         />
-        <div className="searchbtn"><button onClick={handleSearch}><img src="/src/assets/search.png" height={25} width={25} alt="search"></img></button></div>
+        <div className="searchbtn"><button onClick={handleSearch}><img src={search} height={25} width={25} alt="search"></img></button></div>
         </div>
         <TemperatureUnitToggle unit={unit} onUnitChange={handleUnitChange}  />
       </div>
