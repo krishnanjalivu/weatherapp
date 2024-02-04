@@ -9,7 +9,7 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
- margin: 15px;
+ margin: 14px;
     font-family: sans-serif;
     border: 3px solid white;
     border-radius: 15px;
@@ -202,6 +202,9 @@ h2{
     }
     input{
         padding: 5px;
+    }
+    body{
+        margin: 9px;
     }
    }
    @media only screen and (min-width: 900px) {
