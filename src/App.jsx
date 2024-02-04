@@ -23,6 +23,11 @@ function App() {
     } catch (error) {
       setError("Failed to fetch weather data. Please check your city name or API key.");
     }
+    finally {
+      setTimeout(() => {
+        setError(null); // Clear error after a delay
+      }, 2000);
+    }
   };
 
   useEffect(() => {
