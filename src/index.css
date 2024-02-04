@@ -1,0 +1,214 @@
+*{
+    margin: 0;
+    top: 0;
+    bottom: 0;
+}
+body{
+    
+ background-image: url('/src/assets/pexels-jacub-gomez-1143006.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+ margin: 15px;
+    font-family: sans-serif;
+    border: 3px solid white;
+    border-radius: 15px;
+    padding: 10px;
+    
+   
+}
+.current-weather
+{
+    display:flex;
+    flex-direction: column;
+    padding: 20px;
+    margin:0px 5px 10px;
+    align-items: center;
+    line-height: 25px;
+    color: white;
+
+}
+.app{
+    display:flex;
+    flex-direction: column;
+    
+    
+}
+.head1{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 20px;
+
+}
+h1{
+    text-align: center;
+    color: rgb(201, 201, 142);
+    margin-top: 20px;
+}
+
+.data{
+    display: flex;
+    flex-direction: row;
+    justify-content:  space-around;
+    margin: 20px;
+}
+.weather{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.temp{
+    padding: 5px 20px;
+    border-radius: 20px;
+    border: none;
+    margin: 25px;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(253, 237, 145);
+}
+input{
+    padding:10px 50px;
+    display: flex;
+    
+    margin: 25px;
+    color: rgb(202, 200, 195);
+    font-size: 20px;
+    text-align: center;
+}
+
+.glass{
+    background: rgba( 255, 255, 255, 0.07 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 15px );
+    -webkit-backdrop-filter: blur( 15px );
+    border-radius: 10px;
+    border: 2px solid rgb(255, 255, 255);
+}
+.list{
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    
+ 
+   
+}
+li{
+    list-style-type: none;
+}
+.daily{
+    
+    border-radius: 15px;
+    padding: 15px ;
+    color: rgb(255, 255, 255);
+    line-height: 25px;
+}
+ .temperature{
+    font-size: 50px;
+    margin-bottom: 7px;
+    font-weight: 600;
+    
+}
+h2{
+   
+    font-size: 40px;
+    font-weight:600 ;
+    color: rgb(224, 224, 224);
+}
+.date{
+    color: rgb(54, 53, 53);
+    font-size: 25px;
+}
+.averagetemp{
+    margin-top: 40px;
+    font-size: 35px;
+}
+.desc
+{
+    background-color: rgb(66, 66, 66);
+    border: none;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: 15px;
+    text-align: center;
+    margin-top: 10px;
+}
+.datetemp{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+   
+}
+.grey{
+    background-color: rgb(66, 66, 66);
+    border: none;
+    border-radius: 5px;
+    padding: 4px;
+    font-size: 15px;
+    width: 250px;
+    margin: 10px;
+    text-align: center;
+    color: rgb(238, 224, 203);
+}
+.bodyerror{
+
+    display: flex;
+    justify-content: center;
+   
+
+}
+.error{
+    padding: 10px 25px;
+    background-color: white;
+    border-radius: 15px;
+    color: orange;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+   .list{
+    grid-template-columns:repeat(2, 1fr) ;
+
+
+   }
+  }
+  @media only screen and (max-width: 900px) {
+    .list{
+     grid-template-columns:repeat(1, 1fr) ;
+     gap: 10px;
+     margin-left: -40px;
+    }
+    .data{
+        display:flex;
+        flex-direction: column;
+    }
+    .current-weather{
+        padding: 40px;
+    }
+    h1{
+        display: none;
+    }
+ 
+   }
+   @media only screen and (max-width: 580px) {
+    
+    .temp{
+        padding: 5px;
+        font-size: 15px;
+        font-weight: 800;
+        margin-left: -10px;
+    }
+    input{
+        padding: 5px;
+    }
+   }
+   @media only screen and (min-width: 900px) {
+    .error{
+        padding: 10px 50px;
+        width: 500px;
+        text-align: center;
+    }
+   }
+   
