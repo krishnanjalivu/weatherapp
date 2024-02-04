@@ -174,7 +174,7 @@ button{
 }
 .searchbar{
     position:relative;
-    margin: 5px;
+    
 }
 .searchbtn{
     position:absolute;
@@ -213,7 +213,7 @@ button{
         padding: 5px;
         font-size: 15px;
         font-weight: 800;
-        margin-left: -10px;
+        margin-left: -20px;
     }
     input{
         padding: 5px;
