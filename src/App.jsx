@@ -3,7 +3,7 @@ import axios from "axios";
 import CurrentWeather from "./components/CurrentWeather";
 import FiveDayForecast from "./components/FiveDayForecast";
 import TemperatureUnitToggle from "./components/TemperatureUnitToggle";
-
+import errorimg  from "../src/assets/error (1).png"
 function App() {
   const [city, setCity] = useState("");
   const [error, setError] = useState(null);
@@ -97,7 +97,7 @@ function App() {
         <TemperatureUnitToggle unit={unit} onUnitChange={handleUnitChange} />
       </div>
       <div className="bodyerror">
-   {error && <p className="error">City Not Found</p>}
+   {error && <p className="error">Oops!City Not Found<span className="erroricon"><img src={errorimg} height={30} width={30} alt="error"></img></span></p>}
       </div>
       <div className="data">
            {" "}
